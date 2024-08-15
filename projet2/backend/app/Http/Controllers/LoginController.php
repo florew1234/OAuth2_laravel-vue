@@ -33,5 +33,89 @@ class LoginController extends Authenticatable
         return redirect('http://localhost:5173/welcome');
     }
 
+    public function redirectToGoogle() {
+        return Socialite::driver("google")->redirect();
+    }
+
+    public function handleGoogleCallback(){
+        $user = Socialite::driver("google")->user();
+        $authUser = User::where('email', $user->id)->first();
+        if (is_null($authUser)) {
+
+             User::create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'provider' => "google",
+                'provider_id' => $user->id,
+            ]);
+        }
+        
+        //Auth::login($authUser);
+        return redirect('http://localhost:5173/welcome');
+    }
+
+    public function redirectToFacebook() {
+        return Socialite::driver("facebook")->redirect();
+    }
+
+    public function handleProviderFacebook(){
+        $user = Socialite::driver("facebook")->user();
+        $authUser = User::where('email', $user->id)->first();
+        if (is_null($authUser)) {
+
+             User::create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'provider' => "facebook",
+                'provider_id' => $user->id,
+            ]);
+        }
+        
+        //Auth::login($authUser);
+        return redirect('http://localhost:5173/welcome');
+    }
+
+    public function redirectToLinkedIn() {
+        return Socialite::driver("linkedIn")->redirect();
+    }
+
+    public function handleLinkedInCallback(){
+        $user = Socialite::driver("linkedIn")->user();
+        $authUser = User::where('email', $user->id)->first();
+        if (is_null($authUser)) {
+
+             User::create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'provider' => "linkedIn",
+                'provider_id' => $user->id,
+            ]);
+        }
+        
+        //Auth::login($authUser);
+        return redirect('http://localhost:5173/welcome');
+    }
+
+    public function redirectToMicrosoft() {
+        return Socialite::driver("microsoft")->redirect();
+    }
+
+    public function handleProviderMicrosoft(){
+        $user = Socialite::driver("microsoft")->user();
+        $authUser = User::where('email', $user->id)->first();
+        if (is_null($authUser)) {
+
+             User::create([
+                'name' => $user->name,
+                'email' => $user->email,
+                'provider' => "microsoft",
+                'provider_id' => $user->id,
+            ]);
+        }
+        
+        //Auth::login($authUser);
+        return redirect('http://localhost:5173/welcome');
+    }
+
 }
 

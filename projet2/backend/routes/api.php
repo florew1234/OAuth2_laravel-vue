@@ -27,6 +27,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('login/github', [LoginController::class, 'redirectToProvider']);
     Route::get('github/callback', [LoginController::class, 'handleProviderCallback']);
 
+    Route::get('login/google', [LoginController::class, 'redirectToGoogle']);
+    Route::get('google/callback', [LoginController::class, 'handleGoogleCallback']);
+
 });
 
 
