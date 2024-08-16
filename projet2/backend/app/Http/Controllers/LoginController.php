@@ -58,7 +58,7 @@ class LoginController extends Authenticatable
         return Socialite::driver("facebook")->redirect();
     }
 
-    public function handleProviderFacebook(){
+    public function handleFacebookCallback(){
         $user = Socialite::driver("facebook")->user();
         $authUser = User::where('email', $user->id)->first();
         if (is_null($authUser)) {
@@ -100,7 +100,7 @@ class LoginController extends Authenticatable
         return Socialite::driver("microsoft")->redirect();
     }
 
-    public function handleProviderMicrosoft(){
+    public function handleMicrosoftCallback(){
         $user = Socialite::driver("microsoft")->user();
         $authUser = User::where('email', $user->id)->first();
         if (is_null($authUser)) {

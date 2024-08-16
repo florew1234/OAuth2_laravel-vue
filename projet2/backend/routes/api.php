@@ -30,6 +30,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('login/google', [LoginController::class, 'redirectToGoogle']);
     Route::get('google/callback', [LoginController::class, 'handleGoogleCallback']);
 
+    Route::get('login/linkedin', [LoginController::class, 'redirectToLinkedin']);
+    Route::get('linkedin/callback', [LoginController::class, 'handleLinkedInCallback']);
+
+    Route::get('login/facebook', [LoginController::class, 'redirectToFacebook']);
+    Route::get('linkedin/callback', [LoginController::class, 'handleFacebookCallback']);
 });
 
 
